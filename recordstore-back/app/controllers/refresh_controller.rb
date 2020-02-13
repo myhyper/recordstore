@@ -3,7 +3,7 @@ class RefreshController < ApplicationController
 
   def create
     session = JWTSessions::Session.new(payload: claimless_payload, refresh_by_access_allowed: true)
-    tokens = session.refresh_by_access_allowed1 do
+    tokens = session.refresh_by_access_allowed do
       raise JWTSession::Errors::Unauthorized, "Somethings not rijght here!"
     end
 
