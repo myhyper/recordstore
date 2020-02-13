@@ -11,8 +11,15 @@ class SignupController < ApplicationController
       response.set_cookie(JWTSessions.access_cookie, value: tokens[:access], httponly: true, secure: Rails.env.production?)
       render json: { csrf: tokens[:csrf] }
     else
-      render json: { erorr: user.errors.full_messages.join(' ') }, status: :unprocessable_entity
+      render json: { error: user.errors.full_messages.join(' ') }, status: :unprocessable_entity
     end
   end
+
+
+  private
+
+    def user_params
+      params.permit(:email, :password, :password_confirmation)
+    end
 
 end

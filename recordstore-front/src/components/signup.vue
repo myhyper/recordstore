@@ -7,7 +7,7 @@
 
         <div class="mb-6">
           <label for="email" class="label">Email address</label>
-          <input type="email" v-model="email" class="input" id="email" placeholder="email@#email.com">
+          <input type="email" v-model="email" class="input" id="email" placeholder="email@email.com">
         </div>
 
         <div class="mb-6">
@@ -78,3 +78,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.bg-green {
+  background-color: #37AD70;
+}
+</style>
