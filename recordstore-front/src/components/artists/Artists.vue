@@ -73,7 +73,7 @@ export default {
       if (!value) {
         return
       }
-      this.$http.secured.post('/api/v1/artists', { artist: { name: this.newArtist.name } })
+      this.$http.secured.post('/api/v1/artists/', { artist: { name: this.newArtist.name } })
         .then(response => {
           this.artists.push(response.data)
           this.newArtist = ''
