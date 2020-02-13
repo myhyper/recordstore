@@ -49,3 +49,8 @@
 .link-gray:hover {
   @apply text-gray-darker;
 }
+
+
+.bg-green {
+  background-color: #37AD70;
+}

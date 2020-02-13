@@ -5,12 +5,14 @@ class SigninController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user.authenticate(params[:password])
+      logger.debug "[debug] Signin Success"
       payload = { user_id: user.id }
-      session = JWTSession::Session.new(payload: payload, refresh_by_access_allowed: true)
+      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
       tokens = session.login
       response.set_cookie(JWTSessions.access_cookie, value: tokens[:access], httponly: true, secure: Rails.env.production?)
       render json: {crsf: tokens[:csrf] }
     else
+      logger.debug "[debug] Signin Failed"
       not_found
     end
   end

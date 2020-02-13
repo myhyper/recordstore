@@ -5,8 +5,7 @@
 
     <form @submit.prevent="addArtist">
       <div class="mb-6">
-        <input type="text"
-          class="input"
+        <input class="input"
           autofocus
           autocomplete="off"
           placeholder="Type an artist name"
@@ -28,7 +27,7 @@
 
           <button class="bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded" @click.prevent="editArtist(artist)">Edit</button>
 
-          <button class="bg-transparent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red" @click.prevent="editArtist(artist)">Delete</button>
+          <button class="bg-transparent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red" @click.prevent="removeArtist(artist)">Delete</button>
 
         </div>
 
@@ -47,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Artist',
+  name: 'Artists',
   data () {
     return {
       artists: [],
@@ -74,15 +73,15 @@ export default {
       if (!value) {
         return
       }
-      this.$http.secured.post('/api/v1/artists', { artist: { name: this.new } })
-        .ten(response => {
+      this.$http.secured.post('/api/v1/artists', { artist: { name: this.newArtist.name } })
+        .then(response => {
           this.artists.push(response.data)
           this.newArtist = ''
         })
         .catch(error => this.setError(error, 'Cannot create artist'))
     },
     removeArtist (artist) {
-      this.$http.secured.delete(`/api/v1/artists/#{artist.id}`)
+      this.$http.secured.delete(`/api/v1/artists/${artist.id}`)
         .then(response => {
           this.artists.splice(this.artists.indexOf(artist), 1)
         })
@@ -91,7 +90,7 @@ export default {
     editArtist (artist) {
       this.editedArtist = artist
     },
-    updateAritst (artist) {
+    updateArtist (artist) {
       this.editedArtist = ''
       this.$http.secured.patch(`/api/v1/artists/${artist.id}`, { artist: { title: artist.name } })
         .catch(error => this.setError(error, 'Cannot update artist'))
