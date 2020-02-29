@@ -3,21 +3,23 @@
     <Navbar/>
     <div class="container">
       <router-view/>
+      <h2>A</h2>
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import '../node_modules/materialize-css/dist/css/materialize.min.css';
-import '../node_modules/materialize-css/dist/js/materialize.min.js';
+import Navbar from "./components/Navbar";
+
+import "../node_modules/materialize-css/dist/css/materialize.min.css";
+import "../node_modules/materialize-css/dist/js/materialize.min.js";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
     Navbar
   }
-}
+};
 </script>
 
 <style scoped>

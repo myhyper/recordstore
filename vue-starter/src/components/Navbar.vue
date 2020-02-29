@@ -2,10 +2,14 @@
     <nav>
         <div class="nav-wrapper">
             <div class="container">
-                <a href="#" class="brand-logo">Vue lol</a>
+                <router-link to="/" class="brand-logo">Vue lol</router-link>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">about</a></li>
+                    <li>
+                        <router-link to="/">home</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/about">about</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
