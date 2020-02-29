@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col s6">
         <!-- Form -->
-        <PostForm @postCreated="addPost" :editingPost="editingPost"/>
+        <PostForm @postCreated="addPost" :editingPost="editingPost" />
       </div>
       <div class="col s3" style="margin:50px;">
         <p>Limit number of posts</p>
-        <input type="number" v-model="postLimit">
+        <input type="number" v-model="postLimit" />
         <button @click="setLimit()" class="waves-effect waves-light btn">Set</button>
       </div>
     </div>

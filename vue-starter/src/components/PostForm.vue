@@ -7,12 +7,12 @@
         name="title"
         v-model="title"
         :class="[errors.title ? 'invalid' : 'validate']"
-      >
+      />
       <span class="helper-text" data-error="Title must not be empty"></span>
     </div>
     <div class="input-field">
       <label for="body">Body</label>
-      <input type="text" name="body" v-model="body" :class="[errors.body ? 'invalid' : 'validate']">
+      <input type="text" name="body" v-model="body" :class="[errors.body ? 'invalid' : 'validate']" />
       <span class="helper-text" data-error="Body must not be empty"></span>
     </div>
     <button type="submit" class="waves-effect waves-light btn">{{ id ? 'Update' : 'Add'}}</button>
