@@ -1,7 +1,7 @@
 import axios from 'axios';
 axios.defaults.baseURL =
-    // 'https://localhost:3000';
-    'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
+    'https://localhost:3000';
+    // 'https://ndb99xkpdk.execute-api.eu-west-2.amazonaws.com/dev';
 
 export default class PostService {
     getAllPosts() {
@@ -14,11 +14,11 @@ export default class PostService {
 
     writePost(post) {
         if (post.id) {
-            return axios.put(`/post/${post.id}`, post);
-        } else return axios.post('/post', post);
+            return axios.patch(`/posts/${post.id}`, post);
+        } else return axios.post('/posts', post);
     }
 
     deletePost(id) {
-        return axios.delete(`/post/${id}`);
+        return axios.delete(`/posts/${id}`);
     }
 }
